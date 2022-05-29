@@ -1,3 +1,4 @@
+#include <stdio.h>
 
 /* stringlen - strlen - calculate the length of a string */
 int stringlen(const char *s)
