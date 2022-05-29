@@ -24,16 +24,15 @@ void blkrotate(int off, int a[], int n)
         memcpy(&a[n - off], buf,  sizeof buf);
 }
 
-void *memcopy(void *dest, void *src, size_t n)
+/* memorycpy - memcpy - copy memory area */
+void *memorycpy(void *dest, const void *src, size_t n)
 {
-        char    *s, *t;
+	char *tmp = dest;
+	const char *s = src;
 
-        s = (char *) src;
-        t = (char *) dest;
-
-        while (n-- > 0)
-                t[n] = s[n];
-        return t;
+	while (n--)
+		*tmp++ = *s++;
+	return dest;
 }
 
 void printarray(int a[], int n);
