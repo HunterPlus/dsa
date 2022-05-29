@@ -12,6 +12,7 @@ char *reverse(char *s)
 		*s1 = *s2;
 		*s2 = c;
 	}
+	return s;
 }
 
 int main()
