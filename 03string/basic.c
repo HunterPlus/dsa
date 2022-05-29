@@ -64,8 +64,35 @@ int stringcmp(const char *cs, const char *ct)
 		c2 = *ct++;
 		if (c1 != c2)
 			return c1 < c2 ? -1 : 1;
-		if (!c1)
+		if (!c1)	/* c1 = c2 = '\0' */
 			break;
 	}
 	return 0;
+}
+
+/* stringncmp - strncmp - compare two length-limited strings */
+int stringncmp(const char *cs, const char *ct, size_t n)
+{
+	unsigned char c1, c2;
+
+	while (n) {
+		c1 = *cs++;
+		c2 = *ct++;
+		if (c1 != c2)
+			return c1 < c2 ? -1 : 1;
+		if (!c1)	/* c1 = c2 = '\0' */
+			break;
+		n--;
+	}
+	return 0;
+}
+
+/* memoryset - memset - fill memory with a constant byte */
+void *memoryset(void *s, int c, size_t count)
+{
+	char *xs = s;
+
+	while (count--)
+		*xs++ = c;
+	return s;
 }
