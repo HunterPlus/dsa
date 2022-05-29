@@ -9,15 +9,6 @@ int stringlen(const char *s)
 	return sc - s;
 }
 
-/* stringchr - strchr - locate character in string */
-char *stringchr(const char *s, int c)
-{
-	for (; *s != (char)c; ++s)
-		if (*s == '\0')
-			return NULL;
-	return (char *)s;
-}
-
 /* stringcpy - strcpy - copy a string */
 char *stringcpy (char *dest, const char *src)
 {
@@ -54,6 +45,15 @@ char *stringcat(char *dest, const char *src)
 	return tmp;
 }
 
+/* stringchr - strchr - locate character in string */
+char *stringchr(const char *s, int c)
+{
+	for (; *s != (char)c; ++s)
+		if (*s == '\0')
+			return NULL;
+	return (char *)s;
+}
+
 /* stringcmp - strcmp - compare two strings */
 int stringcmp(const char *cs, const char *ct)
 {
@@ -88,11 +88,11 @@ int stringncmp(const char *cs, const char *ct, size_t n)
 }
 
 /* memoryset - memset - fill memory with a constant byte */
-void *memoryset(void *s, int c, size_t count)
+void *memoryset(void *s, int c, size_t n)
 {
 	char *xs = s;
 
-	while (count--)
+	while (n--)
 		*xs++ = c;
 	return s;
 }
