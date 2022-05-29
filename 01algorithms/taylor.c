@@ -9,9 +9,9 @@
 
 double p(double x, int n) 
 {
-    	if (n == 0)
-        	return 1;
-    	return x * p(x, n-1);
+  	if (n == 0)
+    		return 1;
+   	return x * p(x, n-1);
 }
 double f(int n)
 {
@@ -29,7 +29,7 @@ double e(double x, int n)
 double e1(double x, int n)
 {
     	double p, f, s;
-    
+	
     	p = f = s = 1.0;
     	for (int i = 1; i <= n; i++) {
         	p = x * p;
@@ -42,7 +42,7 @@ double e1(double x, int n)
 double e2(double x, int n)      /* Horner’s Rule */
 {
     	double s = 1.0;
-    
+	
     	for (; n > 0; n--)
         	s = 1 + x/n * s;
     	return s;
@@ -51,10 +51,10 @@ double e2(double x, int n)      /* Horner’s Rule */
 int main()
 {
     	int x, n;
-    
+	
     	x = 2;
     	n = 30;
     	printf("%f\n", e(x, n));
-
+	
     	return 0;
 }
