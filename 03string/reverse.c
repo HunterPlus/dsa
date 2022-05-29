@@ -17,9 +17,8 @@ char *reverse(char *s)
 
 int main()
 {
-	char str[] = "I am a student";
+	char str[] = "I am a student";	
 	
-	reverse(str);
-	printf("%s\n", str);
+	printf("%s\n", reverse(str));
 	return 0;
 }
