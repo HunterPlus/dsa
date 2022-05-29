@@ -2,7 +2,7 @@
 /* stringlen - strlen - calculate the length of a string */
 int stringlen(const char *s)
 {
-	char *sc;
+	const char *sc;
 
 	for (sc = s; *sc != '\0'; ++sc)
 		/* nothing */;
