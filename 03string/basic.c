@@ -1,5 +1,5 @@
 
-/* stringlen - strlen - calculate the length of a string
+/* stringlen - strlen - calculate the length of a string */
 int stringlen(const char *s)
 {
 	char *sc;
@@ -10,33 +10,62 @@ int stringlen(const char *s)
 }
 
 /* stringchr - strchr - locate character in string */
-char *stringchr (const char *s, char c)
+char *stringchr(const char *s, int c)
 {
-	while (*s && *s != c)
-		s++;
-	return s;
+	for (; *s != (char)c; ++s)
+		if (*s == '\0')
+			return NULL;
+	return (char *)s;
 }
 
 /* stringcpy - strcpy - copy a string */
 char *stringcpy (char *dest, const char *src)
 {
-	char *t = dest;
+	char *tmp = dest;
 
 	while ((*dest++ = *src++) != '\0') 
 		/* nothing */;	
-	return t;
+	return tmp;
 }
 
 /* stringncpy - strncpy - most n bytes of src are copied */
 char *stringncpy(char *dest, const char *src, size_t n)
 {
-	char	*t = dest;
+	char	*tmp = dest;
 	
 	while (n) {
-		if ((*t = *src) != '\0')
+		if ((*tmp = *src) != '\0')
 			src++;
-		t++;
+		tmp++;
 		n--;
 	}
 	return dest;
+}
+
+/* stringcat - strcat - concatenate two strings */
+char *stringcat(char *dest, const char *src)
+{
+	char *tmp = dest;
+
+	while (*dest)
+		dest++;
+	while ((*dest++ = *src++) != '\0')
+		;
+	return tmp;
+}
+
+/* stringcmp - strcmp - compare two strings */
+int stringcmp(const char *cs, const char *ct)
+{
+	unsigned char c1, c2;
+
+	while (1) {
+		c1 = *cs++;
+		c2 = *ct++;
+		if (c1 != c2)
+			return c1 < c2 ? -1 : 1;
+		if (!c1)
+			break;
+	}
+	return 0;
 }
