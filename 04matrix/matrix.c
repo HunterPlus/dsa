@@ -36,6 +36,18 @@ void *mtx_bias(double bias, void *a, int m, int n)
 	return p;
 }
 
+void *mtx_scale(double scale, void *a, int m, int n)
+{
+	int	i, j;
+	double	*p;
+	
+	p = a;
+	for (i = 0; i < m; i++)
+		for (j = 0; j < n; j++)
+			p[i*n + j] *= scale;
+	return p;
+}
+
 int main()
 {
  	double arr1[2][3] = { 11, 12, 13, 21, 22, 23 };
@@ -47,5 +59,7 @@ int main()
 	
 	mtx_bias(0.1, arr3, 2, 3);
 	mtx_print(arr3, 2, 3);
+	
+	mtx_print(mtx_scale(0.1, arr3, 2, 3), 2, 3);
   	return 0;
 }
