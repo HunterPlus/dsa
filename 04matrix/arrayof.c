@@ -20,6 +20,6 @@ int main()
         printf("\n");
         qsort(name, n, sizeof name[0], scmp);
     	for (int i = 0; i < n; i++)
-    	   	printf("%s\n", name[i]);        
+                printf("%s\n", name[i]);        
     	return 0;
 }
