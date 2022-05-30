@@ -16,9 +16,9 @@ int main()
     	int     n = sizeof(name) / sizeof(name[0]);
         
     	for (int i = 0; i < n; i++)
-    	   	printf("%s\n", name[i]);
-        	printf("\n");
-        	qsort(name, n, sizeof name[0], scmp);
+                printf("%s\n", name[i]);
+        printf("\n");
+        qsort(name, n, sizeof name[0], scmp);
     	for (int i = 0; i < n; i++)
     	   	printf("%s\n", name[i]);        
     	return 0;
