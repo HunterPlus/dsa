@@ -21,6 +21,7 @@ void math()
 		for (int j = 0; j < 3; j++)
 			c[i][j] *= scale;	
 }
+
 void mul()
 {
 	int a[2][3] = { 1, 2, 3, 4, 5, 6 };
@@ -32,9 +33,8 @@ void mul()
 		for (j = 0; j < 4; j++)
 			for (k = 0; k < 3; k++)
 				c[i][j] += a[i][k] * b[k][j];
-				
-	
 }
+
 int main()
 {
 	int arr[2][3] = { 11, 12, 13, 21, 22, 23 };
