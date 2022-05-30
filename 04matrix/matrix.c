@@ -24,6 +24,25 @@ void *mtx_add(void *a, void *b, void *c, int m, int n)
 	return pc;
 }
 
+/* mtx_mul: a = m x dim, b = dim x n; c = m x n */
+void *mtx_mul(void *a, void *b, void *c, int m, int dim, int n)
+{
+	int	i, j, k;
+	double	*pa, *pb, *pc, e;
+	
+	pa = a;
+	pb = b;
+	pc = c;
+	for (i = 0; i < m; i++)
+		for (j = 0; j < n; j++) {
+			e = 0.0;
+			for (k = 0; k < dim; k++)
+				e += pa[i*dim + k] * pb[k*n + j];
+			pc[i*n + j] = e;			
+		}
+	return pc;	
+}
+
 void *mtx_bias(double bias, void *a, int m, int n)
 {
 	int	i, j;
