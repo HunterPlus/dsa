@@ -24,6 +24,18 @@ void *mtx_add(void *a, void *b, void *c, int m, int n)
 	return pc;
 }
 
+void *mtx_bias(double bias, void *a, int m, int n)
+{
+	int	i, j;
+	double	*p;
+	
+	p = a;
+	for (i = 0; i < m; i++)
+		for (j = 0; j < n; j++)
+			p[i*n + j] += bias;
+	return p;
+}
+
 int main()
 {
  	double arr1[2][3] = { 11, 12, 13, 21, 22, 23 };
@@ -32,5 +44,8 @@ int main()
 	
 	mtx_add(arr1, arr2, arr3, 2, 3);
   	mtx_print(arr3, 2, 3);
+	
+	mtx_bias(0.1, arr3, 2, 3);
+	mtx_print(arr3, 2, 3);
   	return 0;
 }
