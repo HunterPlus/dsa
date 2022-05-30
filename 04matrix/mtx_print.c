@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void print2d(void *a, int m, int n)
+void mtx_print(void *a, int m, int n)
 {
   	int i, j, *p;
 	
@@ -14,6 +14,6 @@ int main()
 {
  	int arr[2][3] = { 11, 12, 13, 21, 22, 23 };
 	
-  	print2d(arr, 2, 3);
+  	mtx_print(arr, 2, 3);
   	return 0;
 }
