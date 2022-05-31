@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "stack.h"
 	
 int postfix(char *exp)
@@ -21,14 +22,14 @@ int postfix(char *exp)
 			op2 = pop();			
 			push(pop() + op2);			
 		} else if (*p == '-') {
-			op22 = pop();		
+			op2 = pop();		
 			push(pop() - op2);			
 		} else if (*p = '*') {
 			op2 = pop();
 			push(pop() * op2);
 		} else if (*p = '/') {
 			if ((op2 = pop()) == 0) {
-				fprintf("error: zero divisor\n");
+				fprintf(stderr, "error: zero divisor\n");
 				exit(1);
 			}
 			push(pop() / op2);
