@@ -12,7 +12,7 @@ int empty()			/* if stack is empty return 1, otherwise 0 */
 
 int size()
 {
-	return BUFSIZ;
+	return sp;
 }
 
 void push(int data)
