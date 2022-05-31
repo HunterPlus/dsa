@@ -16,7 +16,7 @@ int priority(int op)
 	case '/':
 		return 30;
 	default:
-		fprintf(stderr, "error: unsurpport op: %c\n", op);
+		fprintf(stderr, "priority: unsurpport op: %c\n", op);
 		exit(1);
 	}
 }
@@ -81,12 +81,12 @@ int postfix(char *expr)
 			push(pop() * op2);
 		} else if (*p == '/') {
 			if ((op2 = pop()) == 0) {
-				fprintf(stderr, "error: zero divisor\n");
+				fprintf(stderr, "postfix: zero divisor\n");
 				exit(1);
 			}
 			push(pop() / op2);
 		} else {
-			fprintf(stderr, "error: unsupport operator:\n%s", p);
+			fprintf(stderr, "postfix: unsupport operator:\n%s", p);
 			exit(1);
 		}
 		p++;
