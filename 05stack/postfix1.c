@@ -5,7 +5,7 @@
 int postfix(char *exp)
 {
 	char	*p;
-	int	c;
+	int	v1, v2;
 	
 	p = exp;
 	while (*p != '\0') {
@@ -16,10 +16,10 @@ int postfix(char *exp)
 			p++;
 			continue;
 		}
-		switch (*p) {
-		case '+': push(pop() + pop()); continue;
-				
-		}
+		if (*p == '+') {
+			v2 = pop();
+			v1 = pop();
+
 	}
 }
 
