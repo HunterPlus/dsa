@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 int empty();
 int size(void);
 void push(int);
