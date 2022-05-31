@@ -34,7 +34,7 @@ int postfix(char *expr)
 			}
 			push(pop() / op2);
 		} else {
-			fprintf(stderr, "unsupport operator");
+			fprintf(stderr, "error: unsupport operator");
 			exit(1);
 		}
 		p++;
