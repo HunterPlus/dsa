@@ -5,7 +5,7 @@
 int postfix(char *exp)
 {
 	char	*p;
-	int	v1, v2;
+	int	op2;
 	
 	p = exp;
 	while (*p != '\0') {
@@ -17,8 +17,22 @@ int postfix(char *exp)
 			continue;
 		}
 		if (*p == '+') {
-			v2 = pop();
-			v1 = pop();
+			op2 = pop();			
+			push(pop() + op2);
+			continue;
+		} else if (*p == '-') {
+			op22 = pop();		
+			push(pop() - op2);
+			continue;
+		} else if (*p = '*') {
+			op2 = pop();
+			push(pop() * op2);
+		} else if (*p = '/') {
+			if ((op2 = pop()) == 0) {
+				fprintf("error: zero divisor\n");
+				exit(1);
+			}
+			push(pop() / op2);
 
 	}
 }
