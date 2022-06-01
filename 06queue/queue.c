@@ -3,30 +3,30 @@
 #include "queue.h"
 
 static int buf[BUFSIZ];
-static int front, rear, size;
+static int _front, _rear, _size;
 
 int size()
 {
-	return size;
+	return _size;
 }
 
 int full()
 {
-	return size = BUFSIZ;
+	return _size == BUFSIZ;
 }
 
 int empty()
 {
-	return size == 0;
+	return _size == 0;
 }
 
 void enqueue(int data)
 {
 	if (full())
 		return;
-	buf[rear] = data;
-	rear = (rear + 1) % BUFSIZ;
-	size++;
+	buf[_rear] = data;
+	_rear = (_rear + 1) % BUFSIZ;
+	_size++;
 }
 
 int dequeue()
@@ -35,9 +35,9 @@ int dequeue()
 	
 	if (empty())
 		return INT_MIN;
-	item = buf[front];
-	front = (front + 1)/ BUFSIZ;
-	size--;
+	item = buf[_front];
+	_front = (_front + 1) % BUFSIZ;
+	_size--;
 	return item;
 }
 
@@ -45,13 +45,13 @@ int front()
 {
 	if (empty())
 		return INT_MIN;
-	return buf[front];
+	return buf[_front];
 }
 
 int rear()
 {
 	if (empty())
 		return INT_MIN;
-	return buf[rear];
+	return buf[_rear];
 }
 	
