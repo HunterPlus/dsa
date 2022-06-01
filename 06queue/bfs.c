@@ -6,24 +6,8 @@ void visit(int d)
 	printf("%d\n", d);
 }
 
-void dfsvisit(int d)
-{
-	if (d == 0)
-		return;
-	dfsvisit(d - 1);
-	visit(d);
-}
-
-/* visit data using DFS */
-void visitarray1(int a[], int n)
-{
-	for (int i = 0; i < n; i++)
-		dfsvisit(a[i]);
-	return;
-}
-
-/* visit data using BFS */
-void visitarray2(int a[], int n)
+/* visit data using BFS with queue */
+void bfs(int a[], int n)
 {
 	int	d;
 	
@@ -41,8 +25,7 @@ int main()
 {
 	int arr[] = { 4, 3, 2 };
 	int n = sizeof(arr) / sizeof(arr[0]);
-	
-	visitarray1(arr, n);
-	visitarray2(arr, n);
+
+	bfs(arr, n);
 	return 0;
 }
