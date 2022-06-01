@@ -25,7 +25,7 @@ void enqueue(int data)
 	if (full())
 		return;
 	buf[rear] = data;
-	rear = (rear + 1) / BUFSIZ;
+	rear = (rear + 1) % BUFSIZ;
 	size++;
 }
 
