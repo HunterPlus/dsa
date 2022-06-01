@@ -14,10 +14,9 @@ void bfs(int a[], int n)
 	for (int i = 0; i < n; i++)
 		enqueue(a[i]);
 	while (!empty()) {
-		d = dequeue();
-		visit(d);
-		if (d > 1)
+		if ((d = dequeue()) > 1)
 			enqueue(d - 1);
+		visit(d);
 	}
 }
 
