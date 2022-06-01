@@ -40,4 +40,18 @@ int dequeue()
 	size--;
 	return item;
 }
+
+int front()
+{
+	if (empty())
+		return INT_MIN;
+	return buf[front];
+}
+
+int rear()
+{
+	if (empty())
+		return INT_MIN;
+	return buf[rear];
+}
 	
