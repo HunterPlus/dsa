@@ -75,6 +75,16 @@ void delete(struct node **headref, int key)
         free(p);
 }
 
+void freelist(struct node *head)
+{
+        struct node *p;
+
+        for (p = head; head != NULL; head = p) {
+                p = head->next;
+                free(head);
+        }
+}
+
 /* recursion delete node */
 struct node *del(struct node *node, int key)
 {
