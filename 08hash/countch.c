@@ -10,7 +10,7 @@ int hash(int c)
 void countch(char *txt)
 {
 	char	*s;
-	int	i, c;
+	int	c;
 	
 	for (s = txt; *s != '\0'; s++)
 		if ((c = *s) >= 'a' && c <= 'z')
