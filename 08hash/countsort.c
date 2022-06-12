@@ -3,7 +3,7 @@
 
 void countsort(int a[], int n)
 {
-	int	out[10], count[MAX], i;
+	int	out[n], count[MAX], i;
 	
 	for (i = 0; i < MAX; i++)
 		count[i] = 0;
