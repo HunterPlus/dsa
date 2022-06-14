@@ -4,6 +4,7 @@
 struct record {
 	int	key;
 	/* other data */
+	struct record *next;
 };
 
 void put(struct record *rec);
