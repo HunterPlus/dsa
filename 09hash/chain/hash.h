@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define HSIZE 7
 
 struct record {
@@ -7,6 +8,7 @@ struct record {
 	struct record *next;
 };
 
+struct record *newrecord(int key);
 void put(struct record *rec);
 struct record *get(int key);
 void delete(int key);

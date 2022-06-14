@@ -55,8 +55,23 @@ void display()
 	struct record *p;
 	
 	for (i = 0; i < HSIZE; i++) {
+		printf("%d: ", i);
 		for (p = hashtab[i]; p; p = p->next)
 			printf("%2d\t", p->key);
 		printf("\n");
 	}
+}
+
+struct record *newrecord(int key)
+{
+	struct record *rec;
+
+	rec = malloc(sizeof(struct record));
+	if (rec == NULL) {
+		fprintf(stderr, "newrecord error");
+		exit(1);
+	}
+	rec->key = key;
+	rec->next = NULL;
+	return rec;
 }
