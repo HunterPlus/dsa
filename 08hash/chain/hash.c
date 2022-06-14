@@ -36,11 +36,12 @@ void delete(int key)
 	struct record *p, *q;
 	
 	i = hash(key);
-	for (q = p = hashtab[i]; p != NULL; p = p->next) {
-		if (p->key == key) {
-			q = p->next;
+	for (p = hashtab[i]; p != NULL; p = p->next) {
+		if (p->key == key) {			
 			if (p == hashtab[i])
-				hashtab[i] = q;
+				hashtab[i] = p->next;
+			else
+				q->next = p->next;
 			free(p);
 			return;
 		}
