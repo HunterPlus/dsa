@@ -44,5 +44,6 @@ void delete(int key)
 			free(p);
 			return;
 		}
+		q = p;
 	}
 }
