@@ -48,3 +48,15 @@ void delete(int key)
 		q = p;
 	}
 }
+
+void display()
+{
+	int 	i;
+	struct record *p;
+	
+	for (i = 0; i < HSIZE; i++) {
+		for (p = hashtab[i]; p; p = p->next)
+			printf("%2d\t", p->key);
+		printf("\n");
+	}
+}
