@@ -92,3 +92,10 @@ void delete2(char *key, int len)
 	if(ent)			/* we should free this deleted record */
 		ent->key = TOMBSTONE;
 }
+
+void display(void print(void *rec))
+{
+	for (int i = 0; i < HSIZE; i++)
+		if (hashtab[i] && hashtab[i]->key != TOMBSTONE)
+			print(hashtab[i]->rec);
+}
