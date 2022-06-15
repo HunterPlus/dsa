@@ -19,4 +19,6 @@ void put2(char *key, int len, void *rec);
 void delete(char *key);
 void delete2(char *key, int len);
 
+void display(void *prt(void *rec));
+
 
