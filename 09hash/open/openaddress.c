@@ -7,19 +7,20 @@ struct record {
 
 struct record *newrecord(int key)
 {
-	struct reccord *rec;
+	struct record *rec;
 	
-	rec = malloc(struct record);
+	rec = malloc(sizeof(struct record));
 	if (rec == NULL) {
 		fprintf(stderr, "newrecord error");
 		exit(1);
 	}
 	rec->key = key;
+	return rec;
 }
 
-void prtrecord(struct record *rec)
+void prtrecord(void *rec)
 {
-	printf("%d", rec->key);
+	printf("%d", ((struct record *)rec)->key);
 }
 
 int main()
@@ -30,13 +31,13 @@ int main()
 	
 	for (int i = 0; i < n; i++) {
 		rec = newrecord(a[i]);
-		put2(rec->key, sizeof(rec->key), rec);
+		put2((char *)&rec->key, sizeof(rec->key), rec);
 	}
 	display(prtrecord);
 	
 	int key = 11;
-	delete2(&key, sizeof(key));
-	display(prtreccord);
+	delete2((char *)&key, sizeof(key));
+	display(prtrecord);
 	
 	return 0;
 }
