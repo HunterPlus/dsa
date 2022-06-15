@@ -93,9 +93,16 @@ void delete2(char *key, int len)
 		ent->key = TOMBSTONE;
 }
 
-void display(void print(void *rec))
+void display(void (*pf)(void *rec))
 {
-	for (int i = 0; i < HSIZE; i++)
-		if (hashtab[i] && hashtab[i]->key != TOMBSTONE)
-			print(hashtab[i]->rec);
+	for (int i = 0; i < HSIZE; i++) {
+		printf("hashtab: %d, record: ", i);
+		if (hashtab[i] == NULL)
+			printf("NULL");
+		else if (hashtab[i]->key == TOMBSTONE)
+			printf("TOMBSTONE");
+		else
+			pf(hashtab[i]->rec);
+		printf("\n");
+	}
 }
