@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 #define HSIZE	16
 #define TOMBSTONE	((void *) -1)	/* represents a deleted hash entry */
