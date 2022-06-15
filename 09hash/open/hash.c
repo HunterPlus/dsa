@@ -1,5 +1,6 @@
 #include "hash.h"
 
+static int used;
 static struct entry *hashtab[HSIZE];
 
 static int hash(char *s, int len)
