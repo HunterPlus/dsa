@@ -19,7 +19,7 @@ struct record *newrecord(int key)
 
 void prtrecord(struct record *rec)
 {
-	printf("%2d  ", rec->key);
+	printf("%d", rec->key);
 }
 
 int main()
@@ -32,6 +32,11 @@ int main()
 		rec = newrecord(a[i]);
 		put2(rec->key, sizeof(rec->key), rec);
 	}
+	display(prtrecord);
+	
+	int key = 11;
+	delete2(&key, sizeof(key));
+	display(prtreccord);
 	
 	return 0;
 }
