@@ -25,7 +25,7 @@ static struct entry *get_entry(char *key, int len)
 	
 	h = hash(key, len);	
 	for (int i = 0; i < HSIZE; i++) {
-		ent = hashtab + (h + i) % HSIZE;
+		ent = hashtab[(h + i) % HSIZE];
 		if (match(ent, key, len))
 			return ent;
 		if (ent->key == NULL)
@@ -41,7 +41,7 @@ static struct entry *put_entry(char *key, int len)
 	
 	h = hash(key, len);
 	for (int i = 0; i < HSIZE; i++) {
-		ent = hashtab + (h + i) % HSIZE;
+		ent = hashtab[(h + i) % HSIZE];
 		if (match(ent, key, len))
 			return ent;
 		if (ent->key == TOMBSTONE) {
@@ -77,7 +77,7 @@ void put(char *key, void *rec)
 
 void put2(char *key, int len, void *rec)
 {
-	struct entry *ent = put_entry(char *key, int len);
+	struct entry *ent = put_entry(key, len);
 	ent->rec = rec;
 }
 
