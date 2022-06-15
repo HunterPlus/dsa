@@ -3,8 +3,13 @@
 static int used;
 static struct entry *hashtab[HSIZE];
 
-static int hash(char *s, int len)
+static unsigned hash(char *s, int len)
 {
+	unsigned h = 0;
+	
+	for (int i = 0; i < len; i++)
+		h = s[i] + 31 * h;
+	return h % HSIZE;
 }
 
 static int match(struct entry *ent, char *key, int len)
@@ -16,7 +21,7 @@ static int match(struct entry *ent, char *key, int len)
 static struct entry *get_entry(char *key, int len)
 {
 	struct entry *ent;
-	int 	h;
+	unsigned h;
 	
 	h = hash(key, len);	
 	for (int i = 0; i < HSIZE; i++) {
@@ -32,7 +37,7 @@ static struct entry *get_entry(char *key, int len)
 static struct entry *put_entry(char *key, int len)
 {
 	struct entry *ent;
-	int	h;
+	unsigned h;
 	
 	h = hash(key, len);
 	for (int i = 0; i < HSIZE; i++) {
