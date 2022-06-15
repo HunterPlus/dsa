@@ -14,7 +14,7 @@ static unsigned hash(char *s, int len)
 
 static int match(struct entry *ent, char *key, int len)
 {
-	return ent->key && ent->key != TOMBSTONE &&
+	return ent && ent->key != TOMBSTONE &&
 		ent->len == len && memcmp(ent->key, key, len) == 0;
 }
 
