@@ -16,3 +16,22 @@ struct record *newrecord(int key)
 	}
 	rec->key = key;
 }
+
+void prtrecord(struct record *rec)
+{
+	printf("%2d  ", rec->key);
+}
+
+int main()
+{
+	struct record *rec;
+	int a[] = { 3, 15, 11, 7, 21, 19, 4 };
+	int n = sizeof(a) / sizeof(a[0]);
+	
+	for (int i = 0; i < n; i++) {
+		rec = newrecord(a[i]);
+		put2(rec->key, sizeof(rec->key), rec);
+	}
+	
+	return 0;
+}
