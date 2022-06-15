@@ -1,7 +1,7 @@
 #include "hash.h"
 
 static int used;
-static struct entry *hashtab[HSIZE];
+static struct entry hashtab[HSIZE];
 
 static unsigned hash(char *s, int len)
 {
@@ -14,7 +14,7 @@ static unsigned hash(char *s, int len)
 
 static int match(struct entry *ent, char *key, int len)
 {
-	return ent && ent->key != TOMBSTONE &&
+	return ent->key && ent->key != TOMBSTONE &&
 		ent->len == len && memcmp(ent->key, key, len) == 0;
 }
 
@@ -25,7 +25,7 @@ static struct entry *get_entry(char *key, int len)
 	
 	h = hash(key, len);	
 	for (int i = 0; i < HSIZE; i++) {
-		ent = hashtab[(h + i) % HSIZE];
+		ent = hashtab + (h + i) % HSIZE;
 		if (match(ent, key, len))
 			return ent;
 		if (ent->key == NULL)
@@ -41,7 +41,7 @@ static struct entry *put_entry(char *key, int len)
 	
 	h = hash(key, len);
 	for (int i = 0; i < HSIZE; i++) {
-		ent = hashtab[(h + i) % HSIZE];
+		ent = hashtab + (h + i) % HSIZE;
 		if (match(ent, key, len))
 			return ent;
 		if (ent->key == TOMBSTONE) {
@@ -97,12 +97,12 @@ void display(void (*pf)(void *rec))
 {
 	for (int i = 0; i < HSIZE; i++) {
 		printf("hashtab: %d, record: ", i);
-		if (hashtab[i] == NULL)
+		if (hashtab[i].key == NULL)
 			printf("NULL");
-		else if (hashtab[i]->key == TOMBSTONE)
+		else if (hashtab[i].key == TOMBSTONE)
 			printf("TOMBSTONE");
 		else
-			pf(hashtab[i]->rec);
+			pf(hashtab[i].rec);
 		printf("\n");
 	}
 }
