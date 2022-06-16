@@ -27,7 +27,7 @@ void insert(int a[], int *pn, int key)
 	a[j] = key;
 	++*pn;
 	while (j > 0 && a[j] < a[(j-1)/2]) {
-		swap(a + j; a + (j-1)/2);
+		swap(a + j, a + (j-1)/2);
 		j = (j-1) / 2;
 	}
 }
@@ -47,7 +47,7 @@ void decrease(int a[], int i, int val)
 {
 	a[i] = val;
 	while( i > 0 && a[i] < a[(i-1) / 2]) {
-		swap(a + i; a + (i-1)/2);
+		swap(a + i, a + (i-1)/2);
 		i = (i-1) / 2;
 	}
 }
@@ -74,6 +74,6 @@ int main()
 	int heap[7], n = 0;
 	
 	for (int i = 0; i < 7; i++)
-		insert(heap, &n);
+		insert(heap, &n, arr[i]);
 	print(heap, n);
 }
