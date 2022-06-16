@@ -16,3 +16,27 @@ void heapify(int a[], int n, int i)
 		heapify(a, n, min);
 	}
 }
+
+void insert(int a[], int *pn, int key)
+{
+	int	j;
+	
+	j = *pn;
+	a[j] = key;
+	++*pn;
+	while (j > 0 && a[j] < a[(j-1)/2]) {
+		swap(a + j; a + (j-1)/2);
+		j = (j-1) / 2;
+	}
+}
+
+int extract(int a[], int *pn)
+{
+	int	n;
+	
+	if ((n = --*pn) == 0)
+		return a[0];
+	swap(a, a + n);
+	heapify(a, n, 0);
+	return a[n];
+}
