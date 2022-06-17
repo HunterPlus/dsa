@@ -4,7 +4,7 @@ struct node *newnode(int data)
 {
 	struct node *node;
 	
-	if ((node = malloc(struct node)) == NULL) {
+	if ((node = malloc(sizeof(struct node))) == NULL) {
 		fprintf(stderr, "newnode: error");
 		exit(1);
 	}
