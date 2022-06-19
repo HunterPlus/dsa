@@ -27,6 +27,13 @@ int height(struct node *node)
 		return 1 + rh;
 }
 
+int count(struct node *node)
+{
+	if (node == NULL)
+		return 0;
+	return 1 + count(node->left) + count(node->right);
+}
+
 void inorder(struct node *node)
 {
 	if (node == NULL)

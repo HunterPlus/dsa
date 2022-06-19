@@ -9,6 +9,7 @@ struct node {
 
 struct node *newnode(int);
 int height(struct node *);
+int count(struct node *);
 void inorder(struct node *);
 void preorder(struct node *);
 void postorder(struct node *);
