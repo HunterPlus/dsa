@@ -1,11 +1,11 @@
 #include "avl.h"
 
-static int max(int a, int b)
+int max(int a, int b)
 {
         return (a > b) ? a : b;
 }
 
-static int height(struct node *node)
+int height(struct node *node)
 {
         if (node == NULL)
                 return 0;
@@ -119,3 +119,58 @@ static struct node *successor(struct node *node)
 	return cur;
 }
 
+struct node *delete(struct node *node, int key)
+{
+	if (node == NULL)
+		return NULL;
+	if (key < node->key)
+		node->left = delete(node->left, key);
+	else if (key > node->key)
+		node->right = delete(node->right, key);
+	else {
+		struct node *temp;
+		if (node->left == NULL) {
+			temp = node->right;
+			free(node);
+			return temp;
+		} else if (node->right == NULL) {
+			temp = node->left;
+			free(node);
+			return temp;
+		}
+		temp = successor(node->right);
+		node->key = temp->key;
+		node->right = delete(node->right, temp->key);
+	}
+
+        int balance = getbalance(node);
+
+        /* left left case */
+        if (balance > 1 && getbalance(node->left) >= 0)
+                return rrotate(node);
+        /* right right case */
+        if (balance < -1 && getbalance(node->right) <= 0)
+                return lrotate(node);
+        /* left right case */
+        if (balance > 1 && getbalance(node->left) < 0) {
+                node->left = lrotate(node->left);
+                return rrotate(node);
+        }
+        /* right left case */
+        if (balance < -1 && getbalance(node->right) > 0) {
+                node->right =rrotate(node->right);
+                return lrotate(node);
+        }
+
+        node->height = 1 + max(height(node->left), height(node->right));
+	return node;
+}
+
+void inorder(struct node *node)
+{
+        if (node != NULL) {
+                inorder(node->left);
+                printf("%2d(%d)  ", node->key, getbalance(node));
+                inorder(node->right);
+        }
+}

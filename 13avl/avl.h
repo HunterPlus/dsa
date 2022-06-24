@@ -9,3 +9,6 @@ struct node {
 };
 
 struct node *newnode(int);
+struct node *insert(struct node *, int);
+struct node *delete(struct node *, int);
+void inorder(struct node *);
