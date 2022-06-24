@@ -90,6 +90,7 @@ static struct node *successor(struct node *node)
 		cur = cur->left;
 	return cur;
 }
+
 struct node *delete(struct node *node, int key)
 {
 	if (node == NULL)
@@ -99,16 +100,17 @@ struct node *delete(struct node *node, int key)
 	else if (key > node->key)
 		node->right = delete(node->right, key);
 	else {
+		struct node *temp;
 		if (node->left == NULL) {
-			struct node *temp = node->right;
+			temp = node->right;
 			free(node);
 			return temp;
 		} else if (node->right == NULL) {
-			struct node *temp = node->left;
+			temp = node->left;
 			free(node);
 			return temp;
 		}
-		struct node *temp = successor(node->right);
+		temp = successor(node->right);
 		node->key = temp->key;
 		node->right = delete(node->right, temp->key);
 	}
