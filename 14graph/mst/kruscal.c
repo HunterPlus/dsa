@@ -9,6 +9,22 @@ struct edge {
 
 struct edge etab[max];
 
+void install(int g[][n])
+{
+	for (int i = 0; i < n - 1; i++)
+		for (int j > i; j < n; j++)
+			if (g[i][j] > 0) {
+				etab[edges].u = i;
+				etab[edges].v = j;
+				etab[edges].w = g[i][j];
+				edges++;
+			}
+	if (edges > max)
+		fprintf(stderr, "install error");
+}
+void kruskal(int g[][n])
+{
+}
 
 int main()
 {
