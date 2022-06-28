@@ -79,6 +79,6 @@ int main()
         addedge(g, 1, 2);
         addedge(g, 2, 4);
 
-        dfs(g, 0);
+        bfs(g, 0);
         return 0;
 }
