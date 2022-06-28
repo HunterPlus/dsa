@@ -53,8 +53,10 @@ void addedge(struct node **graph, int src, int dest)
 void bfs(struct node **g, int n, int u)
 {
         struct node *node;
-	int visited[n] = {};
+	int visited[n];
 	
+	for (int i = 0; i < n; i++)
+		visited[i] = 0;
         visited[u] = 1;
 	enqueue(u);
         while (!empty()) {
@@ -71,6 +73,7 @@ void bfs(struct node **g, int n, int u)
 int main()
 {
         struct node **g;
+	int	n = 5;
 
         g = creategraph(n);
         addedge(g, 0, 1);
