@@ -7,13 +7,12 @@
 void prim(int g[][n], int start)
 {
 	int	selected[n];
-	int	x, y, min;	
+	int	x, y, min;		/* x: from vertex, y: to vertex, form a edge */
 	
 	memset(selected, 0, sizeof(selected));	
 	selected[start] = 1;
 	printf("edge : weight\n");
-	for (int edges = 1; edges < n; edges++) {	/* minimum spanning tree has n-1 edges */
-		x = y = 0;		/* x: from vertex, y: to vertex, form a edge */
+	for (int edges = 1; edges < n; edges++) {	/* minimum spanning tree has n-1 edges */		
 		min = INT_MAX;		/* hold the minimum weight */
 		
 		for (int i = 0; i < n; i++) 	/* traversal the selected array */
