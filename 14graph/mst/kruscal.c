@@ -67,7 +67,7 @@ void kruskal(int g[][n])
 		printf("%d - %d => %d\n", e->u, e->v, e->w);
 		cost += e->w;
 	}
-	printf("Kruskal's minimum spanning tree const: %d\n", cost);
+	printf("Kruskal's minimum spanning tree cost: %d\n", cost);
 }
 
 /* 
