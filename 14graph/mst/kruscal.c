@@ -64,7 +64,7 @@ void kruskal(int g[][n])
 	struct edge *e;
 	for (int i = 0; i < n-1; i++) {
 		e = etab + result[i];
-		printf("%d - %d => %d", e->u, e->v, e->w);
+		printf("%d - %d => %d\n", e->u, e->v, e->w);
 		cost += e->w;
 	}
 	printf("Kruskal's minimum spanning tree const: %d\n", cost);
