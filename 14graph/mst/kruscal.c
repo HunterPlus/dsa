@@ -18,7 +18,7 @@ int find(int parent[], int i)
 	return parent[i];
 }
 
-void union(int parent[], int x, int y)
+void Union(int parent[], int x, int y)
 {
 	parent[x] = y;
 }
@@ -26,7 +26,7 @@ void union(int parent[], int x, int y)
 void install(int g[][n])
 {
 	for (int i = 0; i < n - 1; i++)
-		for (int j > i; j < n; j++)
+		for (int j = i+1; j < n; j++)
 			if (g[i][j] > 0) {
 				etab[edges].u = i;
 				etab[edges].v = j;
@@ -55,17 +55,17 @@ void kruskal(int g[][n])
 		v = find(parent, etab[i].v);
 		if (u != v) {
 			result[j++] = i;
-			union(parent, u, v);
+			Union(parent, u, v);
 		}
 	}
 	
 	printf("kruskal's mst:\n");
-	int const = 0;
+	int cost = 0;
 	struct edge *e;
 	for (int i = 0; i < n-1; i++) {
 		e = etab + result[i];
 		printf("%d - %d => %d", e->u, e->v, e->w);
-		const += e->w;
+		cost += e->w;
 	}
 	printf("Kruskal's minimum spanning tree const: %d\n", cost);
 }
