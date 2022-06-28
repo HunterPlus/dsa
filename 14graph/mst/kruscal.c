@@ -7,6 +7,7 @@ struct edge {
 	int	w;	/* weight */
 };
 
+int	edges;
 struct edge etab[max];
 
 void install(int g[][n])
@@ -22,8 +23,14 @@ void install(int g[][n])
 	if (edges > max)
 		fprintf(stderr, "install error");
 }
+int cmp(const void *x, const void *y)
+{
+	return ((struct edge *) x)->w - ((struct edge *) y)->w;
+}
 void kruskal(int g[][n])
 {
+	install(g);
+	qsort(etab, edges, sizeof(struct edge), cmp);
 }
 
 int main()
