@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 
 static int buf[BUFSIZ];
 static int _front, _rear, _size;
