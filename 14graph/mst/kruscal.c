@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define n 5		/* number of vertices */
 #define max 100		/* max number of edges */
 
@@ -10,6 +11,18 @@ struct edge {
 int	edges;
 struct edge etab[max];
 
+int find(int parent[], int i)
+{
+	if (parent[i] != i)
+		find(parent, parent[i]);
+	return parent[i];
+}
+
+void union(int parent[], int x, int y)
+{
+	parent[x] = y;
+}
+	
 void install(int g[][n])
 {
 	for (int i = 0; i < n - 1; i++)
@@ -29,8 +42,32 @@ int cmp(const void *x, const void *y)
 }
 void kruskal(int g[][n])
 {
+	int parent[n], result[n];
+	int	u, v;
+	
+	for (int i = 0; i < n; i++)
+		parent[i] = i;
 	install(g);
 	qsort(etab, edges, sizeof(struct edge), cmp);
+	
+	for (int i = 0, j = 0; i < edges && j < n-1; i++) {
+		u = find(parent, etab[i].u);
+		v = find(parent, etab[i].v);
+		if (u != v) {
+			result[j++] = i;
+			union(parent, u, v);
+		}
+	}
+	
+	printf("kruskal's mst:\n");
+	int const = 0;
+	struct edge *e;
+	for (int i = 0; i < n-1; i++) {
+		e = etab + result[i];
+		printf("%d - %d => %d", e->u, e->v, e->w);
+		const += e->w;
+	}
+	printf("Kruskal's minimum spanning tree const: %d\n", cost);
 }
 
 int main()
