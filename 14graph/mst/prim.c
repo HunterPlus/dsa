@@ -2,7 +2,7 @@
 #include <limits.h>
 #include <string.h>
 
-int	n = 6;
+int	n = 5;		/* number of vertices */
 void prim(int g[][n], int start)
 {
 	int	selected[n];
@@ -16,7 +16,7 @@ void prim(int g[][n], int start)
 		x = y = 0;		/* x: from vertex, y: to vertex, form a edge */
 		min = INT_MAX;		/* hold the minimum weight */
 		
-		for (int i = 0; i < n; i++) 
+		for (int i = 0; i < n; i++) 	/* traversal the selected array */
 			if (selected[i])
 				for (int j = 0; j < n; j++) 
 					if (!selected[j] && g[i][j]) 		/* select an edge */
