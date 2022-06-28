@@ -70,6 +70,15 @@ void kruskal(int g[][n])
 	printf("Kruskal's minimum spanning tree const: %d\n", cost);
 }
 
+/* 
+            2    3
+    	(0)--(1)--(2)
+    	|    / \   |
+       6| 8/    \5 |7
+    	| /      \ |
+    	(3)-------(4)
+              9         
+*/
 int main()
 {
   	int graph[n][n] = { 	{ 0, 2, 0, 6, 0 },
