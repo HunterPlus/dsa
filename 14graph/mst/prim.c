@@ -2,7 +2,8 @@
 #include <limits.h>
 #include <string.h>
 
-int	n = 5;		/* number of vertices */
+#define n 5		/* number of vertices */
+
 void prim(int g[][n], int start)
 {
 	int	selected[n];
