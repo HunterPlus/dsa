@@ -5,17 +5,17 @@
 
 void floyd(int g[][n])
 {
-	int	i, j, k;
+	int	i, j, k, d;
 	int	dist[n][n];
 	
 	for (i = 0; i < n; i++)
 		for (j = 0; j < n; j++)
 			dist[i][j] = g[i][j];
 	for (k = 0; k < n; k++)
-		for (i = 0; k < n; i++)
+		for (i = 0; i < n; i++)
 			for (j = 0; j < n; j++) 
-				if (dist[i][k] + dist[k][j] < dist[i][j])
-					dist[i][j] = dist[i][k] + dist[k][j];
+				if ((d = dist[i][k] + dist[k][j]) < dist[i][j])
+					dist[i][j] = d;
 	/* print dist matrix */
 	for (i = 0; i < n; i++) {
 		for (j = 0; j < n; j++) 
