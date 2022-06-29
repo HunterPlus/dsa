@@ -18,7 +18,7 @@ int mindistance(int dist[], int spt[])
 
 void dijkstra(int g[][n], int start)
 {
-	int	dist[n], spt[n] = {};		/* spt[]: sortest path tree set */
+	int	dist[n], spt[n] = {};		/* spt[]: shortest path tree set */
 	
 	for (int i = 0; i < n; i++)
 		dist[i] = INT_MAX;
