@@ -76,7 +76,7 @@ int main()
     	graph->edge[0].dest = 1;
     	graph->edge[0].weight = -1;
  
-    	*/add edge 0-2 (or A-C) */
+    	/* add edge 0-2 (or A-C) */
     	graph->edge[1].src = 0;
     	graph->edge[1].dest = 2;
     	graph->edge[1].weight = 4;
