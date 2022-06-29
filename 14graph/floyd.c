@@ -19,7 +19,7 @@ void floyd(int g[][n])
 	/* print dist matrix */
 	for (i = 0; i < n; i++) {
 		for (j = 0; j < n; j++) 
-			if (dist[i][j] = INF)
+			if (dist[i][j] == INF)
 				printf("%7s", "INF");
 			else
 				printf("%7d", dist[i][j]);
