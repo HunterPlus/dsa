@@ -31,9 +31,9 @@ void dijkstra(int g[][n], int start)
 			if (!spt[v] && g[u][v] && dist[u] != INT_MAX && dist[u] + g[u][v] < dist[v])
 				dist[v] = dist[u] + g[u][v];
 	}
-	printf("vertex\t\tdistance from %d", start);
+	printf("vertex\tdistance from %d\n", start);
 	for (int i = 0; i < n; i++)
-		printf("%d\t\t%d\n", i, dist[i]);
+		printf("%d\t%d\n", i, dist[i]);
 }
 
 int main()
