@@ -17,10 +17,10 @@ void kahn(struct node **g, int n)
 	
 	cnt = 0;
 	while (!empty()) {
-		order[cnt++] = dequeue();
-		for (i = 0; i < n; i++)
-			if (--indegree[i] == 0)
-				enqueue(i);
+		order[cnt++] = i = dequeue();
+		for (node = g[i]; node; node = node->next)
+			if (--indegree[node->dest] == 0)
+				enqueue(node->dest);
 	}
 	if (cnt != n) {
 		printf("warning: has an cycle\n");
