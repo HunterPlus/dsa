@@ -1,10 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "kahn.h"
 
-struct node {
-        int     dest;
-        struct node *next;
-};
 struct node *newnode(int v)
 {
         struct node *node;
