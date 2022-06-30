@@ -34,8 +34,4 @@ void addedge(struct node **graph, int src, int dest)
         node = newnode(dest);
         node->next = graph[src];
         graph[src] = node;
-
-        node = newnode(src);
-        node->next = graph[dest];
-        graph[dest] = node;
 }
