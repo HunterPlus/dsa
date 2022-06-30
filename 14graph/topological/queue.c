@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <limits.h>
+#include "kahn.h"
 
 static int buf[BUFSIZ];
 static int _front, _rear, _size;
