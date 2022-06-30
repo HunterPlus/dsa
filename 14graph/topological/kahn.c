@@ -43,5 +43,6 @@ int main()
 	addedge(g, 2, 3);
 	addedge(g, 3, 1);
 	
+	kahn(g, 6);
 	return 0;
 }
