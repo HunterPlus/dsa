@@ -11,8 +11,10 @@ void jose(int m, int start, int njump)
 	while (m > 1) {
 		killed = (start + njump + 1) % m;
 		printf("killed ... %d\n", circle[killed]);
-		if (killed == 0)
+		if (killed == 0) {
 			circle++;
+			start = 0;
+		}
 		else if (killed == m - 1)
 			start = 0;
 		else {
