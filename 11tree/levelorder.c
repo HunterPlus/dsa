@@ -1,14 +1,12 @@
+/* gcc levelorder.c tree.c queue.c      */
+
 #include "tree.h"
 
 void enqueue(void *);
 void *dequeue();
 
-void levelorder(struct node *root)
+void levelorder(struct node *node)
 {
-        struct node *node;
-
-        if ((node = root) == NULL)
-                return;
         while(node) {
                 printf("%d ", node->key);
                 if (node->left)
