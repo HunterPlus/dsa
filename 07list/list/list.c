@@ -75,6 +75,19 @@ void delete(struct node **headref, int key)
         free(p);
 }
 
+void delete1(struct node **headref, int key)
+{
+        struct node *p, **nref;
+        
+        nref = headref;
+        for(p = *nref; p; nref = &p->next, p = p->next) 
+                if (p->data == key) {
+                        *nref = p->next;
+                        free(p);
+                        break;
+                }
+}
+
 void freelist(struct node *head)
 {
         struct node *p;
