@@ -22,7 +22,7 @@ int insert(int key, int a[], int *pn)            /* sorted array */
         return i;                               /* index where inserted */
 }
 
-int exact(int idx, int a[], int *pn)
+int extract(int idx, int a[], int *pn)
 {
         int     elem, i;
 
@@ -42,7 +42,7 @@ int main()
 
         insert(15, arr, &n);
         idx = find(30, arr, n);
-        e = exact(idx, arr, &n);
+        e = extract(idx, arr, &n);
         printf("e: %d\n", e);
         for (int i = 0; i < n; i++)
                 printf("%2d ", arr[i]);
